@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'accounts',
     'offers',
     'insights',
+    'travel_requests',
 
     'drf_spectacular',
     'rest_framework_simplejwt.token_blacklist',
