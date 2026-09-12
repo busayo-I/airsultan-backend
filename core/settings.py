@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'accounts',
     'offers',
+    'insights',
 
     'drf_spectacular',
     'rest_framework_simplejwt.token_blacklist',
