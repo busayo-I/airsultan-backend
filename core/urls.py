@@ -8,6 +8,7 @@ from drf_spectacular.views import (
 )
 from django.conf.urls.static import static
 from django.conf import settings
+from core.views import DashboardStatsView
 
 def api_root(request):
     return JsonResponse({
@@ -20,6 +21,10 @@ def api_root(request):
 urlpatterns = [
     path('',             api_root),
     path('admin/',       admin.site.urls),
+
+    # Dashboard
+    path('api/admin/dashboard/stats/',    DashboardStatsView.as_view(), name='dashboard-stats'),
+
 
     # API routes
     path('api/admin/auth/', include('accounts.urls')),
