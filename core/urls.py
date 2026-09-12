@@ -6,6 +6,8 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
     SpectacularRedocView,
 )
+from django.conf.urls.static import static
+from django.conf import settings
 
 def api_root(request):
     return JsonResponse({
@@ -21,9 +23,10 @@ urlpatterns = [
 
     # API routes
     path('api/admin/auth/', include('accounts.urls')),
+    path('api/admin/offers/', include('offers.urls')),
 
     # Swagger documentation
     path('api/schema/',  SpectacularAPIView.as_view(),                        name='schema'),
     path('api/docs/',    SpectacularSwaggerView.as_view(url_name='schema'),   name='swagger-ui'),
     path('api/redoc/',   SpectacularRedocView.as_view(url_name='schema'),     name='redoc'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
